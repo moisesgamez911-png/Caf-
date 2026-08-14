@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramonagamez | Somos tu mejor sonrisa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#45464a;--muted:#76777b;--cream:#f8f6f3;--white:#fff;--rose:#d9bec6;--sage:#c5d2cb;--line:#e9e4e0;--dark:#3f4145}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+a{color:inherit;text-decoration:none}
+.sidebar{position:fixed;inset:0 auto 0 0;width:76px;background:var(--dark);z-index:50;transition:width .32s ease;display:flex;flex-direction:column;box-shadow:6px 0 30px #20202018}
+.sidebar:hover{width:250px}
+.brand{height:92px;display:flex;align-items:center;justify-content:center;gap:13px;border-bottom:1px solid #fff1;padding:0 13px}
+.brand-mark{width:46px;height:46px;min-width:46px;border-radius:15px;background:linear-gradient(135deg,var(--rose),var(--sage));display:grid;place-items:center;font:700 24px "Playfair Display";color:var(--dark)}
+.brand-name{opacity:0;width:0;overflow:hidden;white-space:nowrap;color:#fff;font:600 20px "Playfair Display";transition:.25s}
+.sidebar:hover .brand-name{opacity:1;width:140px}
+.menu{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:20px 8px}
+.menu a{height:74px;width:100%;border-radius:15px;display:flex;align-items:center;justify-content:center;gap:17px;color:#ececec;transition:.2s;overflow:hidden}
+.menu a:hover,.menu a.active{background:#fff12}
+.menu-icon{width:36px;height:36px;min-width:36px;object-fit:contain;display:block}
+.menu-label{opacity:0;width:0;overflow:hidden;font-weight:600;transition:.22s;white-space:nowrap}
+.sidebar:hover .menu a{justify-content:flex-start;padding-left:17px}
+.sidebar:hover .menu-label{opacity:1;width:100px}
+main{margin-left:76px}
+section{min-height:100vh;padding:92px 8vw;scroll-margin-top:25px}
+.hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:70px;background:radial-gradient(circle at 85% 15%,#eadde1 0,transparent 28%),var(--cream)}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#9a747f;font-weight:700}
+h1,h2,h3{font-family:"Playfair Display",serif;font-weight:600}
+h1{font-size:clamp(52px,6.5vw,86px);line-height:1.02;margin:16px 0 22px;letter-spacing:-1.5px}
+h2{font-size:clamp(40px,5vw,60px);margin:10px 0 18px}
+p{color:var(--muted);line-height:1.8}
+.hero-copy p{max-width:610px;font-size:18px}
+.hero-image{height:570px;border-radius:36px;overflow:hidden;box-shadow:0 30px 70px #4a454515;position:relative}
+.hero-image img{width:100%;height:100%;object-fit:cover;display:block}.hero-image{background:linear-gradient(135deg,#d8c0c7,#c5d2cb)}
+.hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,#24232655)}
+.hero-badge{position:absolute;z-index:2;bottom:28px;left:28px;background:#ffffffdf;backdrop-filter:blur(10px);padding:17px 21px;border-radius:17px}
+.hero-badge strong{display:block;font-family:"Playfair Display";font-size:23px}
+.hero-badge span{font-size:12px;color:var(--muted)}
+#servicios{background:#eeeae7}
+.heading{max-width:700px;margin-bottom:48px}
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.service{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;transition:.25s}
+.service:hover{transform:translateY(-5px);box-shadow:0 20px 45px #4b474312}
+.service-icon{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--rose),var(--sage));display:grid;place-items:center;font-size:22px}
+.service h3{font-size:27px;margin:0 0 8px}
+.service p{margin:0;font-size:14px}
+#ubicacion{background:#fff}
+.location-grid{display:block;max-width:760px}
+.info{padding:38px;border-radius:26px;background:#f4f1ee}
+.info-row{display:flex;gap:15px;margin-bottom:28px}
+.info-icon{width:44px;height:44px;min-width:44px;border-radius:13px;background:#ddc8ce;display:grid;place-items:center}
+.info-row strong{display:block;margin-bottom:5px}
+.info-row span{color:var(--muted);font-size:14px;line-height:1.7}
+.clinic-image{min-height:400px;border-radius:26px;overflow:hidden}
+.clinic-image img{width:100%;height:100%;object-fit:cover;display:block}.clinic-image{background:linear-gradient(135deg,#c5d2cb,#e6d8dc)}
+#contactos{background:linear-gradient(135deg,#e8dadd,#dce5e1);display:flex;align-items:center}
+.contact-card{background:#fffdfbf2;border:1px solid #fff;border-radius:30px;padding:50px;max-width:900px;width:100%;box-shadow:0 25px 65px #514a4b18;display:flex;justify-content:space-between;gap:40px;align-items:center}
+.phone{font:600 38px "Playfair Display";margin:10px 0}
+.instagram{font-weight:600;color:#8d6b75}
+footer{margin-left:76px;background:var(--dark);color:#ddd;text-align:center;padding:26px;font-size:13px}
+@media(max-width:850px){.sidebar{width:64px}.sidebar:hover{width:220px}main{margin-left:64px}footer{margin-left:64px}.hero,.location-grid{grid-template-columns:1fr}.hero-image{height:400px}.services{grid-template-columns:1fr}}
+@media(max-width:560px){section{padding:70px 7vw}h1{font-size:50px}.contact-card{display:block}.phone{font-size:29px}}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">R</div><div class="brand-name">Ramonagamez</div></div>
+  <nav class="menu">
+    <a href="#inicio" class="active"><img class="menu-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAYJJREFUWIXtlL1KA0EURr8JBjGKbyFaa6mdlU+RIpLClFpaCPEdbCSVxKcIKfQN/CMWgmAl1gYSzbHIBpadibMbZyKCF6a5e++cs7OzV/qLAWwBbeAR6AEXwOa84DVgiB0DoOYQvQSawGIIeB0YOeCTGAH1pNYAL6lnhzHgz8myJIDVTP48NLwLLCer65A4CiLwHTxV45LIRnEBxhfuM7PRFbDiqK0AnWACwP53cKAEnCSrlEMivwCeY2d8w89Sz1opiWmfox3qzbNwl4TrJEbAQSz4zyUCwItINGLBi0sAVYpduFkkpg2rqoC3CPC8Eq8C7iLB80jcCNhIippAJTDcJVFJWC1g3fU3hIZbEr5Z0IgAn0Qjy3MZrXktZw9rb/+RRI6FGfs6ksjkjKTdeQnsGWOG6QRQljQoutGvf4J/AZfAR0SetbdL4D6iwK23gvGs7nkmWtnRV/b0PABL2T7rNzTGvAM7kk4lbUuymmTPgEnuyZHvS7qWdGyM6Xvef/7xBczaYc31LZi7AAAAAElFTkSuQmCC" alt="Inicio"><span class="menu-label">Inicio</span></a>
+    <a href="#servicios"><img class="menu-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAA2pJREFUWIW9Vl2IlVUUXWfuuY6KOKj0IHOHMh+knizoodSXUjHqwUIJXwqCKAQRoqcECZQCXxSNIQIhEKJgoF76gYTwp6KoDBuKsBQSZhgtSZF07l57Vg/uK5937t93x2nB4TvfOfvsvfbZ+2w20Cck3UPyGMmrJP8h+Z6kFf3qK2t8iOQFkiL5bwyZ2W+SFs87ATM7EMY/lLRQ0iKSH5OUu++ZdwIkvyYpSasba/V6/eEg9WkZXQN9cpgMIvfdVjQwcG9MJ/rU2TtIbg9vJ9x9l7vvJjkVebBl3glIGiH5V5AojklJK8voSn0Yf9DdTwJYAeAigOOxtQlADcBUpVJ5LKV0vqzuXoxnM/s1vH1H0qLC3mKSR+MlfC+ptHNdQXJbGD8haVYCS8okv4tceKIXnaVegaQNMT2YUppp3k8pEcBo/G5o3m+FXIZASqkW0+dJPtlGbDhkR+46AQCX4vtMN0FJU70oLJUokpaQfARApYvodM75mwjJ3AlIWmBmD6SUluScJ1JKF3o5N2dIWknyXZLXmwrOOXd/uexTM7PHSX7p7mfcfa+kaifh9Y3ySvIayZMkx9z9Z5Izsf65pOFejMcTZtERMztQ9HaI5NZg+RzJGyF4RNLSorJ6vb7W3X9qUYobw83sF5JPhTObSU4HgR2S1pC8SXIKkpab2f7obIpK6O4723kUefFGEPmjaVwMHXWSL0QIZ0i+GGfvDzJ/wt3HQ/gmyffd/Wz8H+3latuh0LQoyvOrDeIkv42110HyRAi9FAK1IHNV0vJuhiQNm9nGprGF5KlCrPcXiB2M9VOSMsxsY7A526jvJN9uPtjGeCJ5qUMuyMwONeRJbo1QXJZUA6IOkDwNYB2A7TnnMUk1d/8dwHSlUlmVUrrSjoS7vyLpoRbkbqSUvsg5fxL/q9z9BwBDAJ7OOX9WjNemuIXxFrewr1sYukFSldFHmtlbLYVIno5r2xaHSuVCJ5AcvSPurTCXXGgHScsYTQpvtWu1Zpk7SmmbXDgHoA7ggxK2M4AR3OoJFgKYdPfNg4OD4x1PdbqFPsffJA9LWtaJ6W1Uq9XjJL+StM7dnwUwBuDH2P5I0ugsDa3hOecJAOdTStbjmdm34O6vkbwS3nRtQu4aCi9CJGlmb/5vxgHAzB6N+B2TtGY+bf0HKkZa65K5obsAAAAASUVORK5CYII=" alt="Servicios"><span class="menu-label">Servicios</span></a>
+    <a href="#ubicacion"><img class="menu-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAABNhJREFUWIXFl1+IVHUUxz9n7szu7LYbhtMyoW27s7vsmj0maUSQgeQK7pr6UmGEIPaiJhEEsZbQUwiZPRYFJgVqoasWvfhQZiASbFDKNDsbuwrujLs1s+v8v6eH+5vx7uydu6sEnpc53Dm/8/2e8zu/8zs/eMAiyzVU1WZgI7AJWAd0A48BWSAHXAPGgFHgooiU/xcCqroC2Ae8CcSBC8AvwDhwGwgAjwNR4HlgCFgNHAWOiUh2uUF6ge9U1SlV/UJV++9hXb+qnlTVW6o67GcbbODAAo4Ag8A2EbkCkEgkOkVkCNgCdOFECjAFTADnbNs+IyLXgZ2quh44oaovAgdEpFKPtWgLVDUAfAM8BLwiIv9OTk6uKpVKI8BuwFoiATZwWkTe6e7unlDVCHAKuAG8Xl8bXgQ+BtYAW0WkkEwmh1X1ONC2BHC9ZIHXYrHYWVVtAn4EfhORt9xGgTrwnThp327A96vq6fsAB2gHvksmk/tEpAjsALaq6g63US0Dptp/B14WkSsm8tP1JAFEhHA4TFNTEwDFYpF8Po+qehGxgW0mExuAk8CAiMzVExgBekVkVzweX21Z1p9ekYfDYSKRCKFQaMH3UqlEOp0mn897kcgGg8GBzs7Om6p6ChgTkcNUozNNZi/wIUAwGDzcCDwajS4CBwiFQkSjUcLhsBeB9nK5/IHR3wP2qGqwRgCnw/0tItcTiUSnqu6q9yAiRCIRRJykqSrZbJZsNltLfb1NnbwRj8dXi8g1YBqno9YIbAK+BQgEAsN4HLVwOLwg8lQqRTqdJp1OMz09vSATDbJgWZY1ZPQzwAtuAuuAqyayzV6rqwVXlTt37tT0XC7na1sVERk06k/AejeBLuAPo/d6La6v8JaWlpre2trqa+v63mPUG8ATcLcVPwpkjB71Wlxf3R0dHczNzQHQ1tbma+uSVeb3JrDSTaAE+F6fxWKRQqFAc3Mz4BRce3u7J9FisdjIjW1+K5g6q27BHNDhYucpMzMzfhwBmJ2d9fu76nsl8I+bwDUgZvTxRqvz+Tzz8/MNvc/Pz/ulHxGp+u4F/nITGAOeM/r5hh5wIvQqMlVdMkO2bZ8z6rM4Q02NwCjwkjE6g7NHnlIqlTyBZmZmKJd9y6hs2/ao0QdxekGNwEWgX1XX9vb2TgJf+nnKZDILzn4ulyOTyfisAFX9vK+vb0pV1+Js9+UaATMkHAXeBgiFQodw7vOGkkqlqFQqVCoVUqmULziQsSyrehe8CxwRERsW3obtOEPndhG5NDExsdmkrOEEVD2ShULBD9wGhmOx2KiqPoMzba0RkTy47nozve4FPlPVFV1dXd+LyEHunt1FUigUlgN+wIA/AnwFHKyCg/dIdgxnJBsUkeL4+PhWs3Bx1/GXjKq+2tPTc05VW3CK7lcRGXEbLZp2gP3ALeCCqq6IxWJnK5VKD/AJS3RLIzZwPBAIDBjwh3GO9m3g/Xpjz4vbDAsfAZuB3SJyCcBMSkOqukVEunGN5SIybtv2edu2z/b19U0ZPxuA48DXwKFq4S1bVHWH62Hy1D2s61fVE6qaVNVtfrbLeZq1AQeBPTiPjx+An3Fa9jTQArQCTwJPA8NAJ87D5lN3wd0XARcRC2dy2ghsMCArcW7UWSABXMIptsv3nO4HJf8BYD4rfU1QATQAAAAASUVORK5CYII=" alt="Ubicación"><span class="menu-label">Ubicación</span></a>
+    <a href="#contactos"><img class="menu-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAA6tJREFUWIW1ll2IVVUUx39LZ5qyApUwnbAm6YOKHKxBQ3Ckniz8SKLA8i16iCYIhPKlMnpQrAiEIMNKqYwy0gpSqSEY+1IEo6kMMqnUJpxpqodyJhx/PZx99Hjn3rkfY3843LvP+u+11llr77UWNAh1vtqjDqiDFZ41iTs3rQfUT9XFjdrNjXeoh9WF6oQ6996kfqMuHY8DO9Ql49jfru4bjwOH1SlVOMvUZWPIj9cbveLmo+qFY8ib1F/UI+q0Cpx+takxD6pjAXAI+BJoH4t4zh1IqXkBeApoBQbG4jedA4NXAA/mS7KvfxU4AtwCPKSOpPXzEfF3WQfU2cBS4KIqNoeB8wvrecB84HXgWWB7RDyjtgB3Ac2Jdw+wAtg0ygF1ObAe2Agcr+JAMzCYjOVffjAiXlK7gDUAETEM7Ch84LXA5FJleQTWAksi4vsqxnNlG4Feta1ENEKWhpoxQZ0IXFKrcYCIOAnsB26ox1hZB4BTwLvlhOp76iR1i9paIh5h9CGeDFxWjwNRSaA2A78C04A+4MqIOFGQbwa2k4X8NbLrNhPoBw4A/5SovBHoiojutL8fmJEfwnkRsTf9XwI8CVyQnq/Sl+1RP46I1SWKPwDa0v8RsojOBiaV8I5FxMFkI68/p/Kyefrkqy3qLPVh9S31XvWj9G5Kgbd5rFo/FtRb1R44k8NiKjqBR4FZwEmyUtpCdkW7gXWJ1wbcpu5ndLgBhvKUqU3AxWT1ozPpWFF0oIi9wOpEep+ssvUCH3J2jRgky+tuslQV0Qz8BHSq1wDbkgPDZOdjcUR8m4ejKR2Is6B+rV6udqs3l5FXTIF6tbpPvTN1xbvL8XLyxAoOdKTfOeX6drqaZaea5MCQekC9qqLxwoZD6vQaeNPVnUl5OfylblUvVZ9QS1MzCpEUdwErgaeB30o4Q3m+1DfJruX6iBhVclNV3QAcjYi11YyXbl6uvpGuXPE5oU5NIf9dvb6KntvVrXUZr6LwmPqd+pz6hXqdGuoG9Wf1k5TCVYm/KEWqJtQyEfUCj0fEKs50unayYaMd2Al0AI+oU4E/qd7SG4P6eYrADPVH02Cqtqp96nn16mxoJoyIPuBl4DP1AaAHeCwi/m1EX83II1BYL1K3qXML7xaom8prGI16h9I/gNMNKSJ2AbtKODPJuuL/4sAW4JV0yofSO4EXgTvIJqSVwH21Kqw4kFSCOgdYSNYhAe4na0xDwDvA7oj4oV69DUN9W12XWm7d+A+yg7SEAdpAiwAAAABJRU5ErkJggg==" alt="Contactos"><span class="menu-label">Contactos</span></a>
+  </nav>
+</aside>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">Clínica odontológica · Riohacha</span>
+    <h1>Ramonagamez</h1>
+    <h3 style="font-size:27px;margin:0 0 20px;color:#777078">Somos tu mejor sonrisa.</h3>
+    <p>Odontología, estética y atención especializada en un espacio pensado para que cuidar tu sonrisa sea una experiencia cómoda, profesional y cercana.</p>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.pexels.com/photos/6627561/pexels-photo-6627561.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Primer plano de una sonrisa blanca y saludable" onerror="this.style.display='none'">
+    <div class="hero-badge"><strong>Tu sonrisa, nuestra prioridad.</strong><span>Atención profesional y cercana</span></div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="heading"><span class="eyebrow">Nuestra atención</span><h2>Servicios</h2><p>Soluciones odontológicas pensadas para cuidar tu salud oral y mejorar la estética de tu sonrisa.</p></div>
+  <div class="services">
+    <article class="service"><div class="service-icon">✦</div><div><h3>Odontología general</h3><p>Prevención, valoración y cuidado integral de tu salud oral.</p></div></article>
+    <article class="service"><div class="service-icon">♡</div><div><h3>Estética dental</h3><p>Tratamientos enfocados en una sonrisa armónica, natural y saludable.</p></div></article>
+    <article class="service"><div class="service-icon">◇</div><div><h3>Ortodoncia</h3><p>Alternativas para mejorar la posición de los dientes y la armonía de tu sonrisa.</p></div></article>
+    <article class="service"><div class="service-icon">◌</div><div><h3>Atención especializada</h3><p>Orientación profesional de acuerdo con las necesidades de cada paciente.</p></div></article>
+  </div>
+</section>
+
+<section id="ubicacion">
+  <div class="heading"><span class="eyebrow">Encuéntranos</span><h2>Ubicación</h2><p>Visítanos en Riohacha y recibe una atención pensada para ti.</p></div>
+  <div class="location-grid">
+    <div class="info">
+      <div class="info-row"><div class="info-icon">⌖</div><div><strong>Dirección</strong><span>Calle 12 # 11-103<br>Riohacha, La Guajira</span></div></div>
+      <div class="info-row"><div class="info-icon">◷</div><div><strong>Horario</strong><span>Lunes a viernes: 8:00 a. m. – 12:00 p. m. y 2:00 p. m. – 6:00 p. m.<br>Sábados: 8:00 a. m. – 12:00 p. m.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contactos">
+  <div style="width:100%"><span class="eyebrow">Estamos para atenderte</span><h2>Contactos</h2>
+    <div class="contact-card">
+      <div><p>Comunícate con nosotros para solicitar información o agendar tu atención.</p><div class="phone">304 820 3232</div></div>
+      <div><div class="instagram">@ramonagamez.co</div><p>Instagram</p></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>Ramonagamez · Somos tu mejor sonrisa.</footer>
+<script>
+const links=document.querySelectorAll('.menu a'), sections=document.querySelectorAll('main section');
+window.addEventListener('scroll',()=>{let current='inicio';sections.forEach(s=>{if(scrollY>=s.offsetTop-180)current=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));});
+</script>
+</body>
+</html>

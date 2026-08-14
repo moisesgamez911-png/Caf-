@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ramona Gómez Odontología Estética — Somos tu mejor sonrisa. Odontología general, estética, ortodoncia, implantología y más, en un ambiente cálido y profesional.">
+<title>Ramona Gómez Odontología Estética</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   TOKENS — paleta, tipografía, sombras
+   ========================================================== */
+:root{
+  --marfil: #F8F5EF;
+  --blanco: #FFFFFF;
+  --azul-suave: #EAF1F1;
+  --turquesa: #4F8C86;
+  --turquesa-oscuro: #33534F;
+  --texto: #26332F;
+  --texto-suave: #5B6B66;
+  --acento: #B08D57;
+  --acento-oscuro: #8F6F3E;
+  --borde: #E2DCCF;
+  --sombra: rgba(38,51,47,.16);
+  --sombra-suave: rgba(38,51,47,.09);
+  --overlay: rgba(18,26,24,.55);
+
+  --fuente-titulo: 'Fraunces', Georgia, serif;
+  --fuente-texto: 'Manrope', Arial, sans-serif;
+  --nav-alto: 82px;
+}
+
+/* ==========================================================
+   BASE / RESET
+   ========================================================== */
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+section[id]{ scroll-margin-top: var(--nav-alto); }
+body{
+  font-family:var(--fuente-texto);
+  color:var(--texto);
+  background:var(--marfil);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+body.sin-scroll{ overflow:hidden; }
+img{ max-width:100%; display:block; }
+a{ text-decoration:none; color:inherit; }
+ul{ list-style:none; }
+h1,h2,h3{ font-family:var(--fuente-titulo); font-weight:500; line-height:1.15; color:var(--texto); }
+button{ font-family:inherit; }
+
+.contenedor{ max-width:1180px; margin:0 auto; padding:0 24px; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--acento);
+  outline-offset:3px;
+  border-radius:3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* ==========================================================
+   UTILIDADES
+   ========================================================== */
+.seccion{ padding:104px 0; }
+.fondo-blanco{ background:var(--blanco); }
+.fondo-marfil{ background:var(--marfil); }
+.fondo-azul{ background:var(--azul-suave); }
+
+.cabecera-seccion{ max-width:680px; margin:0 auto 58px; text-align:center; }
+.cabecera-seccion.alinear-izquierda{ margin:0 0 34px; text-align:left; }
+.cabecera-seccion h2{ font-size:clamp(1.8rem, 3.1vw, 2.55rem); margin-bottom:16px; }
+.cabecera-seccion .subtitulo{ color:var(--texto-suave); font-size:1.02rem; }
+
+.curva-firma{ width:58px; margin:0 auto 18px; color:var(--acento); }
+.cabecera-seccion.alinear-izquierda .curva-firma{ margin:0 0 18px; }
+.curva-firma svg{ width:100%; height:auto; display:block; stroke:currentColor; }
+
+.icono{ width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+
+/* Revelado progresivo al hacer scroll */
+.reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible{ opacity:1; transform:translateY(0); }
+
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+.boton{
+  display:inline-flex; align-items:center; gap:9px;
+  background:var(--acento); color:var(--blanco);
+  border:2px solid var(--acento);
+  padding:15px 34px; border-radius:999px;
+  font-weight:600; font-size:.93rem; letter-spacing:.3px;
+  cursor:pointer; transition:background .3s ease, border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+}
+.boton:hover{ background:var(--acento-oscuro); border-color:var(--acento-oscuro); transform:translateY(-2px); box-shadow:0 12px 26px var(--sombra); }
+
+.boton-secundario{ background:transparent; color:var(--blanco); border:2px solid rgba(255,255,255,.75); }
+.boton-secundario:hover{ background:rgba(255,255,255,.14); border-color:var(--blanco); transform:translateY(-2px); }
+
+.boton-contorno{ background:transparent; color:var(--texto); border:2px solid var(--texto); padding:11px 24px; font-size:.85rem; }
+.boton-contorno:hover{ background:var(--texto); color:var(--blanco); }
+
+.boton-bloque{ width:100%; justify-content:center; }
+
+/* ==========================================================
+   NAVBAR
+   ========================================================== */
+.navbar{
+  position:fixed; top:0; left:0; width:100%; z-index:1000;
+  padding:22px 0;
+  transition:background .4s ease, box-shadow .4s ease, padding .4s ease;
+}
+.navbar .contenedor{ display:flex; align-items:center; justify-content:space-between; }
+
+.marca-nav{ font-family:var(--fuente-titulo); font-size:1.22rem; color:var(--blanco); line-height:1.2; transition:color .4s ease; }
+.marca-nav span{ display:block; font-family:var(--fuente-texto); font-size:.62rem; letter-spacing:2px; text-transform:uppercase; font-weight:600; opacity:.85; margin-top:2px; }
+
+.menu{ display:flex; align-items:center; gap:32px; }
+.menu a{
+  color:var(--blanco); font-size:.92rem; font-weight:500; letter-spacing:.2px;
+  position:relative; padding:4px 0; transition:color .4s ease;
+}
+.menu a::after{
+  content:''; position:absolute; left:0; bottom:-3px; width:0; height:1px;
+  background:currentColor; transition:width .3s ease;
+}
+.menu a:hover::after{ width:100%; }
+
+.navbar.solido{ background:rgba(248,245,239,.97); box-shadow:0 8px 26px var(--sombra-suave); padding:14px 0; }
+.navbar.solido .marca-nav{ color:var(--texto); }
+.navbar.solido .menu a{ color:var(--texto); }
+.navbar.solido .menu-toggle span{ background:var(--texto); }
+
+.menu-toggle{
+  display:none; position:relative; width:38px; height:32px; background:none; border:none; cursor:pointer; z-index:1001;
+}
+.menu-toggle span{
+  display:block; position:absolute; left:0; width:100%; height:2px; background:var(--blanco);
+  transition:transform .3s ease, opacity .3s ease, background .3s ease;
+}
+.menu-toggle span:nth-child(1){ top:4px; }
+.menu-toggle span:nth-child(2){ top:15px; }
+.menu-toggle span:nth-child(3){ top:26px; }
+.menu-toggle.activo span:nth-child(1){ transform:translateY(11px) rotate(45deg); }
+.menu-toggle.activo span:nth-child(2){ opacity:0; }
+.menu-toggle.activo span:nth-child(3){ transform:translateY(-11px) rotate(-45deg); }
+
+@media (max-width:860px){
+  .menu-toggle{ display:block; }
+  .menu{
+    display:flex; flex-direction:column; gap:30px;
+    position:fixed; inset:0; top:0;
+    background:var(--marfil);
+    justify-content:center; align-items:center;
+    transform:translateX(100%); opacity:0; visibility:hidden;
+    transition:transform .4s ease, opacity .4s ease, visibility .4s;
+  }
+  .menu a{ color:var(--texto); font-size:1.2rem; }
+  .menu.activo{ transform:translateX(0); opacity:1; visibility:visible; }
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero{
+  position:relative; height:100vh; min-height:600px;
+  display:flex; align-items:flex-end;
+  overflow:hidden; color:var(--blanco);
+}
+.hero-media{ position:absolute; inset:0; overflow:hidden; }
+.hero-media img{
+  width:100%; height:112%; object-fit:cover; object-position:center 30%;
+  will-change:transform; transform:translateY(0) scale(1.04);
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(18,26,24,.18) 0%, rgba(18,26,24,.38) 48%, rgba(18,26,24,.86) 100%);
+}
+.hero-contenido{ position:relative; z-index:2; width:100%; padding-bottom:128px; }
+.hero-contenido .marca-hero{
+  font-size:clamp(2.5rem, 6.4vw, 4.4rem); font-weight:500;
+}
+.hero-contenido .marca-hero em{ font-style:italic; color:var(--acento); font-weight:500; }
+.hero-eslogan{
+  font-family:var(--fuente-titulo); font-style:italic; font-weight:500;
+  font-size:clamp(1.05rem, 2.2vw, 1.45rem); color:var(--marfil); margin:14px 0 16px;
+}
+.hero-texto{ max-width:460px; color:rgba(255,255,255,.86); font-size:.98rem; margin-bottom:34px; }
+.hero-botones{ display:flex; gap:16px; flex-wrap:wrap; }
+
+.hero-curva{ position:absolute; left:0; bottom:-1px; width:100%; line-height:0; z-index:3; }
+.hero-curva svg{ width:100%; height:70px; display:block; }
+
+.hero-scroll{
+  position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:3;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  color:rgba(255,255,255,.75); font-size:.68rem; letter-spacing:1.5px; text-transform:uppercase;
+}
+.hero-scroll svg{ animation:rebote 2.2s ease-in-out infinite; }
+@keyframes rebote{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(6px);} }
+
+@media (max-width:600px){
+  .hero{ min-height:560px; }
+  .hero-contenido{ padding-bottom:96px; }
+}
+
+/* ==========================================================
+   PRESENTACIÓN (#inicio)
+   ========================================================== */
+.presentacion{ display:flex; flex-wrap:wrap; align-items:center; gap:56px; }
+.presentacion-texto{ flex:1 1 420px; }
+.presentacion-texto .etiqueta{ color:var(--acento); font-weight:600; font-size:.8rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; display:block; }
+.presentacion-texto h2{ font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:20px; }
+.presentacion-texto p{ color:var(--texto-suave); margin-bottom:30px; font-size:1.02rem; }
+.presentacion-imagen{ flex:1 1 380px; position:relative; }
+.presentacion-imagen img{ border-radius:20px; box-shadow:0 24px 50px var(--sombra); }
+.presentacion-imagen::after{
+  content:''; position:absolute; width:100%; height:100%; top:20px; left:20px;
+  border:2px solid var(--acento); border-radius:20px; z-index:-1;
+}
+
+/* ==========================================================
+   SERVICIOS — acordeón
+   ========================================================== */
+.servicios-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(330px,1fr)); gap:22px; }
+
+.servicio-card{
+  background:var(--blanco); border:1px solid var(--borde); border-radius:18px; overflow:hidden;
+  transition:box-shadow .35s ease, transform .35s ease, border-color .35s ease;
+}
+.servicio-card:hover{ box-shadow:0 18px 36px var(--sombra-suave); transform:translateY(-3px); border-color:transparent; }
+
+.servicio-cabecera{
+  width:100%; display:flex; align-items:center; gap:16px;
+  padding:22px 22px; background:none; border:none; text-align:left; cursor:pointer;
+}
+.servicio-icono{
+  flex-shrink:0; width:48px; height:48px; border-radius:50%;
+  background:var(--azul-suave); color:var(--turquesa-oscuro);
+  display:flex; align-items:center; justify-content:center;
+  transition:background .3s ease, transform .3s ease;
+}
+.servicio-card.abierto .servicio-icono{ background:var(--acento); color:var(--blanco); transform:scale(1.06); }
+
+.servicio-titulos{ flex-grow:1; }
+.servicio-titulos h3{ font-size:1.08rem; margin-bottom:2px; }
+.servicio-titulos p{ font-size:.82rem; color:var(--texto-suave); font-family:var(--fuente-texto); }
+
+.servicio-flecha{ flex-shrink:0; color:var(--acento); transition:transform .35s ease; }
+.servicio-card.abierto .servicio-flecha{ transform:rotate(180deg); }
+
+.servicio-panel{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .4s ease; }
+.servicio-panel-interior{ overflow:hidden; }
+.servicio-card.abierto .servicio-panel{ grid-template-rows:1fr; }
+
+.servicio-lista{ padding:0 24px 24px 86px; display:grid; gap:9px; }
+.servicio-lista li{ position:relative; padding-left:18px; font-size:.93rem; color:var(--texto); }
+.servicio-lista li::before{
+  content:''; position:absolute; left:0; top:.62em; width:6px; height:6px; border-radius:50%;
+  background:var(--turquesa); opacity:.7;
+}
+@media (max-width:480px){ .servicio-lista{ padding-left:24px; } }
+
+/* ==========================================================
+   TRATAMIENTOS DESTACADOS
+   ========================================================== */
+.destacados-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(270px,1fr)); gap:28px; }
+.destacado-card{
+  background:var(--blanco); border-radius:20px; overflow:hidden;
+  box-shadow:0 12px 32px var(--sombra-suave); display:flex; flex-direction:column;
+  transition:box-shadow .35s ease, transform .35s ease;
+}
+.destacado-card:hover{ box-shadow:0 22px 46px var(--sombra); transform:translateY(-4px); }
+.destacado-imagen{ overflow:hidden; height:220px; }
+.destacado-imagen img{ width:100%; height:100%; object-fit:cover; transition:transform .7s ease; }
+.destacado-card:hover .destacado-imagen img{ transform:scale(1.09); }
+.destacado-info{ padding:22px 24px 26px; display:flex; flex-direction:column; flex-grow:1; }
+.destacado-info h3{ font-size:1.15rem; margin-bottom:8px; }
+.destacado-info p{ color:var(--texto-suave); font-size:.93rem; margin-bottom:20px; flex-grow:1; }
+
+/* ==========================================================
+   PROMOCIÓN
+   ========================================================== */
+.promocion{
+  position:relative; overflow:hidden; padding:120px 0;
+  background:linear-gradient(125deg, var(--turquesa-oscuro) 0%, #24312d 75%);
+  color:var(--marfil); text-align:center;
+}
+.promocion-decoracion{ position:absolute; inset:0; opacity:.14; color:var(--marfil); pointer-events:none; }
+.promocion-decoracion svg{ width:140%; height:100%; }
+.promocion .contenedor{ position:relative; z-index:2; }
+.promocion h2{ color:var(--blanco); font-size:clamp(1.8rem,3.4vw,2.5rem); margin-bottom:18px; }
+.promocion p{ max-width:640px; margin:0 auto 14px; color:rgba(248,245,239,.85); }
+.promocion .boton{ margin-top:26px; }
+
+/* ==========================================================
+   NOSOTROS
+   ========================================================== */
+.nosotros-grid{ display:flex; flex-wrap:wrap; gap:56px; align-items:center; }
+.nosotros-imagen{ flex:1 1 380px; position:relative; }
+.nosotros-imagen img{ border-radius:20px; box-shadow:0 24px 50px var(--sombra); }
+.nosotros-texto{ flex:1 1 420px; border-left:3px solid var(--acento); padding-left:32px; }
+.nosotros-texto p{ color:var(--texto-suave); font-size:1.02rem; margin-bottom:20px; }
+
+/* ==========================================================
+   GALERÍA
+   ========================================================== */
+.galeria{ columns:3 300px; column-gap:20px; }
+.galeria img{
+  width:100%; margin:0 0 20px; border-radius:16px; break-inside:avoid; cursor:zoom-in;
+  box-shadow:0 8px 20px var(--sombra-suave);
+  transition:transform .45s ease, box-shadow .45s ease;
+}
+.galeria img:hover{ transform:translateY(-5px) scale(1.015); box-shadow:0 18px 34px var(--sombra); }
+
+.lightbox{
+  position:fixed; inset:0; z-index:2000; background:rgba(18,26,24,.92);
+  display:flex; align-items:center; justify-content:center; padding:36px;
+  opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s ease;
+}
+.lightbox.activo{ opacity:1; visibility:visible; }
+.lightbox img{ max-width:90vw; max-height:85vh; border-radius:12px; box-shadow:0 30px 70px rgba(0,0,0,.5); }
+.lightbox-cerrar{
+  position:absolute; top:24px; right:28px; width:44px; height:44px; border-radius:50%;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3); color:var(--blanco);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .3s ease;
+}
+.lightbox-cerrar:hover{ background:rgba(255,255,255,.24); }
+
+/* ==========================================================
+   CONTACTO
+   ========================================================== */
+.contacto-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:52px; align-items:start; }
+@media (max-width:900px){ .contacto-grid{ grid-template-columns:1fr; } }
+
+.contacto-tarjeta{
+  background:var(--blanco); border-radius:20px; padding:36px 32px; box-shadow:0 14px 34px var(--sombra-suave);
+}
+.contacto-fila{ display:flex; gap:16px; align-items:flex-start; margin-bottom:22px; }
+.contacto-fila:last-child{ margin-bottom:0; }
+.contacto-icono{
+  flex-shrink:0; width:42px; height:42px; border-radius:50%; background:var(--azul-suave); color:var(--turquesa-oscuro);
+  display:flex; align-items:center; justify-content:center;
+}
+.contacto-icono.marca-arroba{ font-family:var(--fuente-titulo); font-style:italic; font-size:1.15rem; }
+.contacto-fila h3{ font-size:.92rem; text-transform:uppercase; letter-spacing:1px; color:var(--texto-suave); margin-bottom:4px; }
+.contacto-fila p, .contacto-fila a{ font-size:1rem; }
+.contacto-fila a:hover{ color:var(--acento); }
+
+.mapa-espacio{
+  margin-top:26px; border-radius:14px; overflow:hidden; box-shadow:0 10px 26px var(--sombra-suave); line-height:0;
+}
+.mapa-espacio iframe{ width:100%; height:240px; display:block; border:0; }
+.mapa-leyenda{ margin-top:12px; font-size:.86rem; color:var(--texto-suave); }
+.mapa-leyenda a{ color:var(--turquesa-oscuro); font-weight:600; }
+.mapa-leyenda a:hover{ color:var(--acento); }
+
+.redes-tira{
+  margin-top:26px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  padding:18px 24px; background:var(--azul-suave); border-radius:14px;
+}
+.redes-tira h3{ font-size:.92rem; font-weight:600; }
+
+.formulario{
+  background:var(--blanco); border-radius:20px; padding:38px 36px; box-shadow:0 14px 34px var(--sombra-suave);
+}
+.campo{ margin-bottom:22px; }
+.campo label{ display:block; margin-bottom:8px; font-weight:600; font-size:.85rem; color:var(--texto); letter-spacing:.2px; }
+.campo input, .campo select, .campo textarea{
+  width:100%; padding:13px 16px; border:1.5px solid var(--borde); border-radius:10px;
+  font-family:inherit; font-size:.96rem; background:var(--marfil); color:var(--texto);
+  transition:border-color .3s ease, box-shadow .3s ease, background .3s ease;
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus{
+  outline:none; border-color:var(--acento); background:var(--blanco);
+  box-shadow:0 0 0 4px rgba(176,141,87,.14);
+}
+.campo textarea{ resize:vertical; min-height:110px; }
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+footer{ background:var(--texto); color:var(--marfil); }
+.footer-superior{ padding:78px 0 44px; }
+.footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:44px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,.14); }
+@media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:520px){ .footer-grid{ grid-template-columns:1fr; } }
+
+.footer-marca h3{ color:var(--blanco); font-size:1.3rem; margin-bottom:8px; }
+.footer-marca p{ font-family:var(--fuente-titulo); font-style:italic; color:var(--acento); margin-bottom:16px; }
+.footer-marca .footer-descripcion{ font-family:var(--fuente-texto); font-style:normal; color:rgba(248,245,239,.65); font-size:.9rem; max-width:280px; }
+
+.footer-columna h4{ font-size:.78rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--acento); margin-bottom:16px; }
+.footer-columna p, .footer-columna a{ display:block; font-size:.92rem; color:rgba(248,245,239,.78); margin-bottom:10px; transition:color .3s ease; }
+.footer-columna a:hover{ color:var(--blanco); }
+
+.footer-inferior{ text-align:center; padding:24px 0; font-size:.82rem; color:rgba(248,245,239,.55); }
+
+/* ==========================================================
+   RESPONSIVE GENERAL
+   ========================================================== */
+@media (max-width:768px){
+  .seccion{ padding:76px 0; }
+  .presentacion, .nosotros-grid{ flex-direction:column; }
+  .nosotros-texto{ border-left:none; border-top:3px solid var(--acento); padding-left:0; padding-top:26px; }
+  .galeria{ columns:2 220px; }
+}
+@media (max-width:480px){
+  .galeria{ columns:1; }
+  .formulario, .contacto-tarjeta{ padding:28px 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== SPRITE DE ÍCONOS (decorativo, oculto) ===================== -->
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <symbol id="i-general" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-estetica" viewBox="0 0 24 24"><path d="M12 3c.6 3 2.4 4.8 5.4 5.4-3 .6-4.8 2.4-5.4 5.4-.6-3-2.4-4.8-5.4-5.4C9.6 7.8 11.4 6 12 3z"/></symbol>
+    <symbol id="i-rehabilitacion" viewBox="0 0 24 24"><path d="M4 9l4 3 4-6 4 6 4-3-2 9H6L4 9z"/><path d="M6 18h12"/></symbol>
+    <symbol id="i-ortodoncia" viewBox="0 0 24 24"><path d="M4 9c3 5 13 5 16 0"/><circle cx="7.4" cy="10.4" r="1"/><circle cx="12" cy="11.7" r="1"/><circle cx="16.6" cy="10.4" r="1"/></symbol>
+    <symbol id="i-endodoncia" viewBox="0 0 24 24"><path d="M12 3v8"/><path d="M12 11c-2 0-3 4-3 8"/><path d="M12 11c2 0 3 4 3 8"/></symbol>
+    <symbol id="i-periodoncia" viewBox="0 0 24 24"><path d="M3 14c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></symbol>
+    <symbol id="i-cirugia" viewBox="0 0 24 24"><path d="M6 18L18 6M9 6H6v3M15 18h3v-3"/></symbol>
+    <symbol id="i-pediatria" viewBox="0 0 24 24"><path d="M12 19s-7-4.5-7-9.5C5 6 7 4 9.5 4 11 4 12 5 12 5s1-1 2.5-1C17 4 19 6 19 9.5 19 14.5 12 19 12 19z"/></symbol>
+    <symbol id="i-implantologia" viewBox="0 0 24 24"><path d="M12 3v4M8 9h8M9 11.5h6M9 14h6M9 16.5h6M12 18v3"/></symbol>
+    <symbol id="i-otras" viewBox="0 0 24 24"><circle cx="7" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="17" cy="12" r="1.3"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-7.6 7-12.3A7 7 0 105 8.7C5 13.4 12 21 12 21z"/><circle cx="12" cy="9" r="2.3"/></symbol>
+    <symbol id="i-telefono" viewBox="0 0 24 24"><path d="M6 3h3l1.2 5-2.1 2c1.1 2.9 3 4.8 5.9 5.9l2-2.1 5 1.2v3c0 1.1-.9 2-2 2C10 20 4 14 4 5c0-1.1.9-2 2-2z"/></symbol>
+    <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.5V12l3 1.8"/></symbol>
+    <symbol id="i-cerrar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-sonrisa" viewBox="0 0 60 20"><path d="M2 4c14 14 42 14 56 0"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar transparente" id="navbar">
+  <div class="contenedor">
+    <a href="#inicio" class="marca-nav">Ramona Gómez<span>Odontología Estética</span></a>
+    <ul class="menu" id="menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#promocion">Promoción</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="hero-media">
+    <img id="heroImg" src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/c6d176ad3afa9fcc8b57a808bf4f57fddfc2684c.jpg" alt="Sonrisa saludable y estética" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="contenedor hero-contenido">
+    <h1 class="marca-hero">Ramona Gómez<br><em>Odontología Estética</em></h1>
+    <p class="hero-eslogan">"Somos tu mejor sonrisa"</p>
+    <p class="hero-texto">Tratamientos de odontología general y estética para cuidar tu salud oral con calidez y precisión.</p>
+    <div class="hero-botones">
+      <a class="boton" href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">Agenda tu cita</a>
+      <a class="boton boton-secundario" href="#servicios">Conoce nuestros servicios</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    Descubre más
+    <svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg>
+  </div>
+
+  <div class="hero-curva" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,0 C 480,100 960,100 1440,0 L1440,100 L0,100 Z" fill="var(--blanco)"/></svg>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== INICIO / PRESENTACIÓN ===================== -->
+  <section id="inicio" class="seccion fondo-blanco">
+    <div class="contenedor presentacion">
+      <div class="presentacion-texto reveal">
+        <span class="etiqueta">Bienvenido</span>
+        <h2>Bienvenido a Ramona Gómez Odontología Estética</h2>
+        <p>Cuidamos tu salud oral y transformamos tu sonrisa con tratamientos odontológicos diseñados para brindarte bienestar, confianza y una sonrisa que te haga sentir orgulloso.</p>
+        <a class="boton" href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">Agenda tu cita</a>
+      </div>
+      <div class="presentacion-imagen reveal">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/7e80a10ce2592c2eec81f9f13b3320d81ea8a51a.jpg" alt="Sonrisa estética con carillas dentales" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICIOS ===================== -->
+  <section id="servicios" class="seccion fondo-azul">
+    <div class="contenedor">
+      <div class="cabecera-seccion reveal">
+        <h2>Nuestros Servicios</h2>
+        <div class="curva-firma"><svg viewBox="0 0 60 20"><use href="#i-sonrisa"/></svg></div>
+        <p class="subtitulo">En Ramona Gómez Odontología Estética ofrecemos atención integral en odontología, combinando diferentes especialidades para el cuidado completo de tu salud oral.</p>
+      </div>
+
+      <div class="servicios-grid">
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-general"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Odontología general</h3>
+              <p>Cuidado integral y preventivo para tu salud bucal.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Consulta odontológica</li>
+              <li>Limpieza dental</li>
+              <li>Prevención y cuidado oral</li>
+              <li>Restauraciones dentales</li>
+              <li>Diagnóstico y valoración</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-estetica"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Odontología estética</h3>
+              <p>Realza tu sonrisa con tratamientos personalizados.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Diseño de sonrisa</li>
+              <li>Carillas dentales</li>
+              <li>Blanqueamiento dental</li>
+              <li>Restauraciones estéticas</li>
+              <li>Contorneado y estética dental</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-rehabilitacion"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Rehabilitación oral</h3>
+              <p>Recupera función y estética en tus piezas dentales.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Coronas</li>
+              <li>Prótesis dentales</li>
+              <li>Rehabilitación de piezas dentales</li>
+              <li>Restauraciones</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-ortodoncia"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Ortodoncia</h3>
+              <p>Alineación dental con opciones convencionales y estéticas.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Ortodoncia convencional</li>
+              <li>Ortodoncia estética</li>
+              <li>Evaluación de mordida y alineación dental</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-endodoncia"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Endodoncia</h3>
+              <p>Tratamiento especializado de conductos y dolor dental.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Tratamientos de conductos</li>
+              <li>Atención de dientes afectados</li>
+              <li>Diagnóstico de dolor dental</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-periodoncia"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Periodoncia</h3>
+              <p>Salud y cuidado de tus encías.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Tratamiento de encías</li>
+              <li>Prevención de enfermedades periodontales</li>
+              <li>Limpiezas y mantenimiento periodontal</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-cirugia"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Cirugía oral</h3>
+              <p>Procedimientos quirúrgicos con valoración profesional.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Extracciones dentales</li>
+              <li>Procedimientos de cirugía oral</li>
+              <li>Valoración quirúrgica</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-pediatria"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Odontopediatría</h3>
+              <p>Atención odontológica pensada para los más pequeños.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Atención odontológica para niños</li>
+              <li>Prevención</li>
+              <li>Educación en higiene oral</li>
+              <li>Control del desarrollo dental</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-implantologia"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Implantología</h3>
+              <p>Reposición dental con soluciones de implantes.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Valoración para implantes</li>
+              <li>Reposición de piezas dentales</li>
+              <li>Rehabilitación sobre implantes</li>
+            </ul>
+          </div></div>
+        </article>
+
+        <article class="servicio-card reveal">
+          <button class="servicio-cabecera" aria-expanded="false">
+            <span class="servicio-icono"><svg class="icono" width="22" height="22"><use href="#i-otras"/></svg></span>
+            <span class="servicio-titulos">
+              <h3>Otras especialidades odontológicas</h3>
+              <p>Diagnóstico y atención odontológica especializada.</p>
+            </span>
+            <span class="servicio-flecha"><svg class="icono" width="18" height="18"><use href="#i-flecha"/></svg></span>
+          </button>
+          <div class="servicio-panel"><div class="servicio-panel-interior">
+            <ul class="servicio-lista">
+              <li>Diagnóstico integral</li>
+              <li>Atención especializada</li>
+              <li>Valoraciones odontológicas</li>
+            </ul>
+          </div></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRATAMIENTOS DESTACADOS ===================== -->
+  <section id="destacados" class="seccion fondo-blanco">
+    <div class="contenedor">
+      <div class="cabecera-seccion reveal">
+        <h2>Tratamientos Destacados</h2>
+        <div class="curva-firma"><svg viewBox="0 0 60 20"><use href="#i-sonrisa"/></svg></div>
+        <p class="subtitulo">Conoce algunos de nuestros tratamientos más solicitados en odontología estética y rehabilitación oral.</p>
+      </div>
+
+      <div class="destacados-grid">
+        <article class="destacado-card reveal">
+          <div class="destacado-imagen"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/1b1b7db03dfe449a9413d1d9e9daea04604a40f3.jpg" alt="Diseño de sonrisa" loading="lazy"></div>
+          <div class="destacado-info">
+            <h3>Diseño de sonrisa</h3>
+            <p>Un plan personalizado para armonizar la forma, el color y la proporción de tu sonrisa.</p>
+            <a class="boton boton-contorno" href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">Solicitar información</a>
+          </div>
+        </article>
+
+        <article class="destacado-card reveal">
+          <div class="destacado-imagen"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/682e9d40885304850fc443c138c4033ecce7842f.jpg" alt="Carillas dentales" loading="lazy"></div>
+          <div class="destacado-info">
+            <h3>Carillas dentales</h3>
+            <p>Recupera la estética de tu sonrisa con carillas diseñadas a la medida de tus dientes.</p>
+            <a class="boton boton-contorno" href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">Solicitar información</a>
+          </div>
+        </article>
+
+        <article class="destacado-card reveal">
+          <div class="destacado-imagen"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/ceb44fc151e03baa845bbf3b516ae9bc07feff73.jpg" alt="Blanqueamiento dental" loading="lazy"></div>
+          <div class="destacado-info">
+            <h3>Blanqueamiento dental</h3>
+            <p>Un tratamiento seguro para iluminar tu sonrisa y devolverle su brillo natural.</p>
+            <a class="boton boton-contorno" href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">Solicitar información</a>
+          </div>
+        </article>
+
+        <article class="destacado-card reveal">
+          <div class="destacado-imagen"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/86809428f6982d0bfc9aa2cfc086724b2371a958.jpg" alt="Ortodoncia" loading="lazy"></div>
+          <div class="destacado-info">
+            <h3>Ortodoncia</h3>
+            <p>Alineamos tu sonrisa con opciones convencionales y estéticas adaptadas a ti.</p>
+            <a class="boton boton-contorno" href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">Solicitar información</a>
+          </div>
+        </article>
+
+        <article class="destacado-card reveal">
+          <div class="destacado-imagen"><img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cbea805cf6a5dc736f8b9ac6496804d1a7e652ba.jpg" alt="Rehabilitación oral" loading="lazy"></div>
+          <div class="destacado-info">
+            <h3>Rehabilitación oral</h3>
+            <p>Recupera la función y la estética de tus piezas dentales con nuestros tratamientos de rehabilitación.</p>
+            <a class="boton boton-contorno" href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">Solicitar información</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROMOCIÓN ===================== -->
+  <section id="promocion" class="promocion">
+    <div class="promocion-decoracion" aria-hidden="true">
+      <svg viewBox="0 0 60 20" preserveAspectRatio="none"><use href="#i-sonrisa"/></svg>
+    </div>
+    <div class="contenedor reveal">
+      <h2>Promoción especial Amor y Amistad</h2>
+      <p>Celebra el Amor y la Amistad regalando una sonrisa.</p>
+      <p>Haz que tu sonrisa sea parte de los mejores momentos. Pregunta por nuestra promoción especial de Amor y Amistad en carillas dentales.</p>
+      <a class="boton" href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">Quiero conocer la promoción</a>
+    </div>
+  </section>
+
+  <!-- ===================== NOSOTROS ===================== -->
+  <section id="nosotros" class="seccion fondo-marfil">
+    <div class="contenedor nosotros-grid">
+      <div class="nosotros-imagen reveal">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/8e4d9bc2ab6676d640bf19f351560294a3f006a9.jpg" alt="Consultorio de Ramona Gómez Odontología Estética" loading="lazy">
+      </div>
+      <div class="nosotros-texto reveal">
+        <div class="cabecera-seccion alinear-izquierda">
+          <h2>Sobre Nosotros</h2>
+          <div class="curva-firma"><svg viewBox="0 0 60 20"><use href="#i-sonrisa"/></svg></div>
+        </div>
+        <p>En Ramona Gómez Odontología Estética trabajamos para ofrecer atención odontológica integral, combinando salud oral, estética y bienestar. Nuestro objetivo es acompañar a nuestros pacientes en el cuidado de su sonrisa y brindarles una experiencia profesional y cercana.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALERÍA ===================== -->
+  <section id="galeria" class="seccion fondo-blanco">
+    <div class="contenedor">
+      <div class="cabecera-seccion reveal">
+        <h2>Galería</h2>
+        <div class="curva-firma"><svg viewBox="0 0 60 20"><use href="#i-sonrisa"/></svg></div>
+        <p class="subtitulo">Conoce nuestras instalaciones y algunos de nuestros tratamientos.</p>
+      </div>
+      <div class="galeria reveal">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/8e4d9bc2ab6676d640bf19f351560294a3f006a9.jpg" alt="Consultorio odontológico" loading="lazy">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6d431392f4a0566dc79dcb8f1e9432308e528656.jpg" alt="Sala de espera de la clínica" loading="lazy">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/cbea805cf6a5dc736f8b9ac6496804d1a7e652ba.jpg" alt="Equipo odontológico del consultorio" loading="lazy">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/c6d176ad3afa9fcc8b57a808bf4f57fddfc2684c.jpg" alt="Sonrisa estética" loading="lazy">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/e892b93ff6c89a97dde5327435a2dda5c3e503fc.jpg" alt="Tratamiento de blanqueamiento dental" loading="lazy">
+        <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/6bcc579de5ec8629d087be608d2390e3ca8d7102.jpg" alt="Recepción de la clínica dental" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section id="contacto" class="seccion fondo-azul">
+    <div class="contenedor">
+      <div class="cabecera-seccion reveal">
+        <h2>Contacto</h2>
+        <div class="curva-firma"><svg viewBox="0 0 60 20"><use href="#i-sonrisa"/></svg></div>
+        <p class="subtitulo">¿Quieres cuidar tu sonrisa o conocer nuestros tratamientos? Comunícate con nosotros y agenda tu valoración.</p>
+      </div>
+
+      <div class="contacto-grid">
+        <!-- Información -->
+        <div class="reveal">
+          <div class="contacto-tarjeta">
+            <div class="contacto-fila">
+              <span class="contacto-icono"><svg class="icono" width="20" height="20"><use href="#i-pin"/></svg></span>
+              <div>
+                <h3>Dirección</h3>
+                <p>Calle 12 No. 11-103</p>
+              </div>
+            </div>
+            <div class="contacto-fila">
+              <span class="contacto-icono"><svg class="icono" width="20" height="20"><use href="#i-telefono"/></svg></span>
+              <div>
+                <h3>Teléfono / WhatsApp</h3>
+                <a href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">304 820 3232</a>
+              </div>
+            </div>
+            <div class="contacto-fila">
+              <span class="contacto-icono marca-arroba" aria-hidden="true">@</span>
+              <div>
+                <h3>Instagram</h3>
+                <a href="https://www.instagram.com/ramonagvsonrisas/" target="_blank" rel="noopener noreferrer">@ramonagvsonrisas</a>
+              </div>
+            </div>
+            <div class="contacto-fila">
+              <span class="contacto-icono"><svg class="icono" width="20" height="20"><use href="#i-reloj"/></svg></span>
+              <div>
+                <h3>Horario de atención</h3>
+                <p>Lunes a viernes: 8:00 a.m. - 12:00 p.m.</p>
+                <p>Lunes a viernes: 2:00 p.m. - 6:00 p.m.</p>
+                <p>Sábados: 8:00 a.m. - 12:00 p.m.</p>
+                <p>Domingos: Cerrado</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mapa-espacio">
+            <iframe src="https://www.google.com/maps?q=11.5348441,-72.9178454&z=16&output=embed" width="100%" height="240" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación SENA Comercio y Servicios, Riohacha - La Guajira"></iframe>
+          </div>
+          <p class="mapa-leyenda">SENA Comercio y Servicios — Cra. 15 #21-34, Riohacha, La Guajira. <a href="https://www.google.com/maps/place/?q=place_id:ChIJL82rDbxii44Rt95Az4BLpdY" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a></p>
+
+          <div class="redes-tira">
+            <h3>Síguenos en nuestras redes sociales</h3>
+            <a class="boton boton-contorno" href="https://www.instagram.com/ramonagvsonrisas/" target="_blank" rel="noopener noreferrer">Instagram: @ramonagvsonrisas</a>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <form class="formulario reveal">
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+          </div>
+          <div class="campo">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" placeholder="Escribe tu correo electrónico" required>
+          </div>
+          <div class="campo">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Escribe tu número de teléfono" required>
+          </div>
+          <div class="campo">
+            <label for="servicio">Servicio de interés</label>
+            <select id="servicio" name="servicio">
+              <option value="">Selecciona un servicio</option>
+              <option value="odontologia-general">Odontología general</option>
+              <option value="odontologia-estetica">Odontología estética</option>
+              <option value="carillas-dentales">Carillas dentales</option>
+              <option value="diseno-sonrisa">Diseño de sonrisa</option>
+              <option value="blanqueamiento">Blanqueamiento</option>
+              <option value="ortodoncia">Ortodoncia</option>
+              <option value="rehabilitacion-oral">Rehabilitación oral</option>
+              <option value="endodoncia">Endodoncia</option>
+              <option value="periodoncia">Periodoncia</option>
+              <option value="cirugia-oral">Cirugía oral</option>
+              <option value="odontopediatria">Odontopediatría</option>
+              <option value="implantologia">Implantología</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje"></textarea>
+          </div>
+          <button type="submit" class="boton boton-bloque">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="contenedor footer-superior">
+    <div class="footer-grid">
+      <div class="footer-marca">
+        <h3>Ramona Gómez Odontología Estética</h3>
+        <p>"Somos tu mejor sonrisa"</p>
+        <p class="footer-descripcion">Atención odontológica integral, estética y cercana para el cuidado de tu sonrisa.</p>
+      </div>
+      <div class="footer-columna">
+        <h4>Contacto</h4>
+        <p>Calle 12 No. 11-103</p>
+        <a href="https://wa.me/573048203232" target="_blank" rel="noopener noreferrer">WhatsApp: 304 820 3232</a>
+        <a href="https://www.instagram.com/ramonagvsonrisas/" target="_blank" rel="noopener noreferrer">Instagram: @ramonagvsonrisas</a>
+      </div>
+      <div class="footer-columna">
+        <h4>Horario</h4>
+        <p>Lun a vie: 8:00 a.m. - 12:00 p.m.</p>
+        <p>Lun a vie: 2:00 p.m. - 6:00 p.m.</p>
+        <p>Sábados: 8:00 a.m. - 12:00 p.m.</p>
+        <p>Domingos: Cerrado</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-inferior">
+    <p>&copy; 2026 Ramona Gómez Odontología Estética. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- ===================== LIGHTBOX GALERÍA ===================== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-cerrar" id="lightboxCerrar" aria-label="Cerrar imagen ampliada">
+    <svg class="icono" width="18" height="18"><use href="#i-cerrar"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  var prefiereReducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Navbar: transparente -> sólida al hacer scroll ---------- */
+  var navbar = document.getElementById('navbar');
+  function actualizarNavbar() {
+    if (window.scrollY > 60) {
+      navbar.classList.add('solido');
+      navbar.classList.remove('transparente');
+    } else {
+      navbar.classList.remove('solido');
+      navbar.classList.add('transparente');
+    }
+  }
+  actualizarNavbar();
+  window.addEventListener('scroll', actualizarNavbar, { passive: true });
+
+  /* ---------- Menú hamburguesa (móvil) ---------- */
+  var menuToggle = document.getElementById('menuToggle');
+  var menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', function () {
+    var abierto = menu.classList.toggle('activo');
+    menuToggle.classList.toggle('activo');
+    menuToggle.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', abierto ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+    document.body.classList.toggle('sin-scroll', abierto);
+  });
+  menu.querySelectorAll('a').forEach(function (enlace) {
+    enlace.addEventListener('click', function () {
+      menu.classList.remove('activo');
+      menuToggle.classList.remove('activo');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('sin-scroll');
+    });
+  });
+
+  /* ---------- Acordeón de servicios ---------- */
+  document.querySelectorAll('.servicio-cabecera').forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      var tarjeta = boton.closest('.servicio-card');
+      var expandido = tarjeta.classList.contains('abierto');
+      tarjeta.classList.toggle('abierto');
+      boton.setAttribute('aria-expanded', expandido ? 'false' : 'true');
+    });
+  });
+
+  /* ---------- Parallax suave en el Hero ---------- */
+  var heroImg = document.getElementById('heroImg');
+  if (heroImg && !prefiereReducido) {
+    var ejecutando = false;
+    window.addEventListener('scroll', function () {
+      if (!ejecutando) {
+        window.requestAnimationFrame(function () {
+          var desplazamiento = window.scrollY * 0.22;
+          heroImg.style.transform = 'translateY(' + desplazamiento + 'px) scale(1.04)';
+          ejecutando = false;
+        });
+        ejecutando = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- Aparición progresiva de secciones ---------- */
+  var elementosReveal = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !prefiereReducido) {
+    var observador = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (entrada) {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('visible');
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    elementosReveal.forEach(function (el) { observador.observe(el); });
+  } else {
+    elementosReveal.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  /* ---------- Lightbox de la galería ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCerrar = document.getElementById('lightboxCerrar');
+
+  function abrirLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add('activo');
+    document.body.classList.add('sin-scroll');
+  }
+  function cerrarLightbox() {
+    lightbox.classList.remove('activo');
+    document.body.classList.remove('sin-scroll');
+  }
+
+  document.querySelectorAll('.galeria img').forEach(function (img) {
+    img.addEventListener('click', function () { abrirLightbox(img.src, img.alt); });
+  });
+  lightboxCerrar.addEventListener('click', cerrarLightbox);
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) cerrarLightbox();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') cerrarLightbox();
+  });
+
+});
+</script>
+
+</body>
+</html>
